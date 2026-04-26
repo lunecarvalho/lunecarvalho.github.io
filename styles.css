@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Raleway:ital,wght@0,135;1,135&display=swap');
 
 /* Reset básico */
 * {
@@ -9,7 +9,11 @@
 
 :root {
   color-scheme: dark;
-  font-family: "Raleway", sans-serif;
+  font-family: "JetBrains Mono", monospace;
+  font-optical-sizing: auto;
+  font-size: 15px;
+  font-weight: 100;
+  font-style: normal;
   background: #120a29;
   color: #fffefa;
   line-height: 1.6;
@@ -114,23 +118,96 @@ button {
   padding: 1rem 1.5rem 3rem;
 }
 
-.cards-row {
+.about-section {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-bottom: 2rem;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  padding: 80px 10%;
+  padding-left: 10px;
+  padding-top: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
 }
 
-.card {
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 28px;
-  padding: 1.6rem;
-  backdrop-filter: blur(14px);
+/* ===== KICKER ===== */
+.kicker {
+  color: #f2c94c;
+  letter-spacing: 4px;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
 
-.card h2 {
-  margin-bottom: 0.85rem;
+/* ===== TÍTULO ===== */
+.about-left h1 {
+  font-size: 48px;
+  margin: 0 0 20px;
+}
+
+.about-left h1 span {
+  color: #f2c94c;
+}
+
+/* ===== TEXTO ===== */
+.about-left p {
+  line-height: 1.7;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 16px;
+}
+
+.about-left span {
+  background: linear-gradient(0deg, #f2c94c 40%, #5b2c6f 40%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===== CARD DIREITA ===== */
+.info-card {
+  background: rgba(91, 44, 111, 0.081);
+  border: 1px solid rgba(91, 44, 111, 0.35);
+  border-radius: 14px;
+  padding: 25px;
+  padding-bottom: 10px;
+  backdrop-filter: blur(12px);
+}
+
+/* cada item */
+.info-item {
+  margin-bottom: 18px;
+  font-size: 12px;
+}
+
+.info-item span {
+  display: block;
+  font-size: 12px;
+  color: #f2c94c;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.info-item p {
+  margin: 0;
+  color: rgba(255,255,255,0.85);
+}
+
+/* hover sutil */
+.info-card:hover {
+  border-color: linear-gradient(135deg, rgba(91, 44, 111, 0.35), rgba(242, 201, 76, 0.18));
+  transform: translateY(-3px);
+  transition: 0.3s ease;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+
+  .about-left h1 {
+    font-size: 36px;
+  }
 }
 
 .section {
