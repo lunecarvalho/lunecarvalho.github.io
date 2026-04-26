@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lune Carvalho</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-content">
+      <div>
+        <p class="eyebrow">Non binary · 26 years old · Sao Paulo, Brazil</p>
+        <h1>Lune Carvalho</h1>
+        <p class="hero-description">Data Scientist and AI Student.</p>
+        <div class="hero-actions">
+          <button id="action-contact">Entre em contato</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="content">
+    <section class="cards-row">
+      <article class="card">
+        <h2>Sobre mim</h2>
+        <p>Estudante de <b>Ciência de Dados</b> e <b>Tecnologia da Informação</b> na <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, com grande interesse em Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural. Focado no desenvolvimento de projetos práticos utilizando Python, desde o processamento de dados até aplicações interativas de IA.</p>
+      </article>
+      <article class="card">
+        <h2>Habilidades</h2>
+        <p>Desenvolvimento de projetos com foco em Inteligência Artificial e Processamento de Linguagem Natural (NLP), utilizando principalmente Python como linguagem base. Trabalho com modelos pré-treinados da biblioteca Hugging Face Transformers para tarefas como tradução automática, sumarização de textos e outras aplicações de compreensão e geração de linguagem natural.</p>
+      </article>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-header">
+        <h2>Habilidades</h2>
+        <p>Use os botões abaixo para explorar as categorias.</p>
+      </div>
+      <div class="skill-tabs">
+        <button class="tab active" data-skill="frontend">Frontend</button>
+        <button class="tab" data-skill="backend">Data Science</button>
+        <button class="tab" data-skill="nlp">NLP</button>
+        <button class="tab" data-skill="tools">Ferramentas</button>
+      </div>
+      <div class="skill-panels">
+        <div class="panel active" data-skill="frontend">
+          <div class="skill-item"><strong>HTML5</strong></div>
+          <div class="skill-item"><strong>CSS3</strong></div>
+          <div class="skill-item"><strong>JavaScript</strong></div>
+          <div class="skill-item"><strong>Gradio</strong></div>
+          <div class="skill-item"><strong>Streamlit</strong></div>
+        </div>
+        <div class="panel" data-skill="backend">
+          <div class="skill-item"><strong>Python</strong></div>
+          <div class="skill-item"><strong>Pandas</strong></div>
+          <div class="skill-item"><strong>NumPy</strong></div>
+          <div class="skill-item"><strong>Scikit-learn</strong></div>
+          <div class="skill-item"><strong>TensorFlow</strong></div>
+          <div class="skill-item"><strong>PyTorch</strong></div>
+        </div>
+        <div class="panel" data-skill="nlp">
+          <div class="skill-item"><strong>NLTK</strong></div>
+          <div class="skill-item"><strong>spaCy</strong></div>
+          <div class="skill-item"><strong>Transformers</strong></div>
+          <div class="skill-item"><strong>Hugging Face</strong></div>
+          <div class="skill-item"><strong>TF-IDF</strong></div>
+          <div class="skill-item"><strong>Bag of Words</strong></div>
+          <div class="skill-item"><strong>Word Embeddings</strong></div>
+        </div>
+        <div class="panel" data-skill="tools">
+          <div class="skill-item"><strong>SQL</strong></div>
+          <div class="skill-item"><strong>MySQL</strong></div>
+          <div class="skill-item"><strong>Git</strong></div>
+          <div class="skill-item"><strong>Github</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-header">
+        <h2>Projetos</h2>
+        <p>Clique em cada projeto para ver mais detalhes.</p>
+      </div>
+      <div class="project-grid">
+        <div class="project-card" data-title="Check Orders Chatbot" data-desc="Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio." data-repo="https://github.com/lunecarvalho/check-orders-chatbot">
+          <h3>Check Orders Chatbot</h3>
+          <p>IA para consulta de pedidos</p>
+        </div>
+        <div class="project-card" data-title="Translate Summarizer App" data-desc="Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva." data-repo="https://github.com/lunecarvalho/translate-summarizer-app">
+          <h3>Translate Summarizer App</h3>
+          <p>Tradução e resumo com IA</p>
+        </div>
+        <div class="project-card" data-title="Background Remover App" data-desc="Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces." data-repo="https://github.com/lunecarvalho/background-remover-app">
+          <h3>Background Remover App</h3>
+          <p>Remoção de fundo com IA</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Quer saber mais? Vamos conversar:</p>
+    <div class="footer-actions">
+      <a class="social-btn" href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.334-1.757-1.334-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.806 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.305-5.467-1.335-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.124-.304-.535-1.53.115-3.185 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.655 1.655.245 2.88.12 3.185.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.82 1.115.82 2.25 0 1.625-.015 2.935-.015 3.335 0 .32.21.695.825.575C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a class="social-btn" href="https://linkedin.com/in/lune-carvalho" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.55c0-1.32-.03-3.02-1.84-3.02-1.84 0-2.12 1.43-2.12 2.92v5.65H9.38V9h3.41v1.56h.05c.48-.91 1.65-1.86 3.4-1.86 3.63 0 4.3 2.39 4.3 5.49v6.27zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.08 0-1.15.92-2.08 2.06-2.08 1.14 0 2.06.93 2.06 2.08 0 1.15-.92 2.08-2.06 2.08zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44c.98 0 1.78-.8 1.78-1.78V1.78C24 .8 23.2 0 22.22 0z"/></svg>
+        LinkedIn
+      </a>
+      <a class="social-btn" href="mailto:acarvalho.lune@gmail.com">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        E-mail
+      </a>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-panel">
+      <button class="modal-close" id="close-modal">×</button>
+      <h2 id="modal-title">Detalhes do projeto</h2>
+      <p id="modal-description"></p>
+      <a id="modal-repo-btn" href="#" target="_blank" rel="noopener noreferrer" class="modal-repo-btn">Ver no GitHub →</a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
