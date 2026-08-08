@@ -84,7 +84,8 @@ button {
   max-width: 680px;
   color: #fffdfa;
   font-size: 1.2rem;
-  animation: typewriter 4s steps(48, end) infinite;
+  --hero-typed-width: 28ch;
+  animation: typewriter 4s steps(28, end) infinite, blink 1s steps(1, end) infinite;
   overflow: hidden;
   white-space: nowrap;
   border-right: 3px solid #f2c94c;
@@ -411,11 +412,11 @@ button {
     border-right-color: #f2c94c;
   }
   60% {
-    width: 30ch;
+    width: var(--hero-typed-width);
     border-right-color: #f2c94c;
   }
   60.1%, 80% {
-    width: 30ch;
+    width: var(--hero-typed-width);
     border-right-color: #f2c94c;
   }
   80.1%, 100% {
@@ -434,10 +435,6 @@ button {
   50%, 99% {
     border-right-color: transparent;
   }
-}
-
-.hero-description {
-  animation: typewriter 4s steps(48, end) infinite, blink 1s steps(1, end) infinite;
 }
 
 @media (max-width: 900px) {

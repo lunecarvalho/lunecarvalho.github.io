@@ -7,6 +7,21 @@ const modalDescription = document.getElementById('modal-description');
 const modalRepoBtn = document.getElementById('modal-repo-btn');
 const closeModal = document.getElementById('close-modal');
 const contactButtons = document.querySelectorAll('#action-contact, #open-contact');
+const heroDescription = document.querySelector('.hero-description');
+
+function syncHeroTypewriter() {
+  if (!heroDescription) {
+    return;
+  }
+
+  const text = heroDescription.textContent.trim();
+  const charCount = [...text].length || 1;
+
+  heroDescription.style.setProperty('--hero-typed-width', `${charCount}ch`);
+  heroDescription.style.animation = `typewriter 4s steps(${charCount}, end) infinite, blink 1s steps(1, end) infinite`;
+}
+
+syncHeroTypewriter();
 
 function setActiveTab(target) {
   tabs.forEach(tab => tab.classList.toggle('active', tab === target));
