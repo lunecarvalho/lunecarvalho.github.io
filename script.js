@@ -6,8 +6,138 @@ const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
 const modalRepoBtn = document.getElementById('modal-repo-btn');
 const closeModal = document.getElementById('close-modal');
-const contactButtons = document.querySelectorAll('#action-contact, #open-contact');
 const heroDescription = document.querySelector('.hero-description');
+const languagePtButton = document.getElementById('lang-pt');
+const languageEnButton = document.getElementById('lang-en');
+const themeToggle = document.getElementById('theme-toggle');
+const htmlRoot = document.documentElement;
+const THEME_STORAGE_KEY = 'portfolio-theme';
+
+let activeCard = null;
+let currentLanguage = 'pt';
+
+function applyTheme(theme) {
+  const isLight = theme === 'light';
+
+  document.body.classList.toggle('light-mode', isLight);
+
+  if (themeToggle) {
+    themeToggle.setAttribute('aria-pressed', String(isLight));
+    themeToggle.setAttribute('aria-label', isLight ? 'Ativar modo escuro' : 'Ativar modo claro');
+    themeToggle.title = isLight ? 'Modo claro ativo' : 'Modo escuro ativo';
+  }
+}
+
+const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+applyTheme(savedTheme === 'light' ? 'light' : 'dark');
+
+const translations = {
+  pt: {
+    pageTitle: 'Lune Carvalho — Ciência de Dados e IA.',
+    languageAriaPt: 'Idioma atual: Português',
+    languageAriaEn: 'Switch language to English',
+    heroEyebrow: 'Non binary · 26 years old · Sao Paulo, Brazil',
+    heroDescription: 'Data Science and AI Student.',
+    aboutKicker: '// SOBRE MIM',
+    aboutTitle: 'Quem sou <span>eu</span>',
+    aboutParagraph1:
+      'Estudante de <b>Ciência de Dados</b> e <b>Tecnologia da Informação</b> na <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, com estudos focados em Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural.',
+    aboutParagraph2:
+      'Dedicada atualmente no desenvolvimento de projetos práticos utilizando Python, desde o processamento de dados até aplicações interativas de IA.',
+    locationLabel: '📍 Localização',
+    locationValue: 'Alumínio, SP',
+    companyLabel: '🏢 Empresa Atual',
+    companyValue: 'iFood | Anota AI',
+    languagesLabel: '🌐 Idiomas',
+    languagesValue: 'Português (nativo) • Inglês (intermediário)',
+    educationLabel: '🎓 Formação',
+    educationValue: 'Ciência de Dados • Tecnologia da Informação',
+    impactLabel: '💡 Impacto Social',
+    impactValue: 'Voluntária • WoMakersCode',
+    skillsTitle: 'Stacks',
+    skillsSubtitle: 'Use os botões abaixo para explorar as categorias.',
+    tabFrontend: 'Frontend',
+    tabBackend: 'Data Science',
+    tabNlp: 'NLP',
+    tabTools: 'Ferramentas',
+    projectsTitle: 'Projetos',
+    projectsSubtitle: 'Clique em cada projeto para ver mais detalhes.',
+    footerTitle: 'Quer saber mais? Vamos conversar:',
+    modalDefaultTitle: 'Detalhes do projeto',
+    modalRepoText: 'Ver no GitHub →',
+    projectTag1: 'IA para consulta de pedidos',
+    projectTag2: 'Tradução e resumo com IA',
+    projectTag3: 'Remoção de fundo com IA'
+  },
+  en: {
+    pageTitle: 'Lune Carvalho — Data Science and AI.',
+    languageAriaPt: 'Mudar idioma para Português',
+    languageAriaEn: 'Current language: English',
+    heroEyebrow: 'Non binary · 26 years old · Sao Paulo, Brazil',
+    heroDescription: 'Data Science and AI Student.',
+    aboutKicker: '// ABOUT ME',
+    aboutTitle: 'Who am <span>I</span>',
+    aboutParagraph1:
+      'Data Science and Information Technology student at the <b>Virtual University of the State of Sao Paulo (UNIVESP)</b>, focused on Artificial Intelligence, Machine Learning, and Natural Language Processing.',
+    aboutParagraph2:
+      'Currently dedicated to building practical projects with Python, from data processing to interactive AI applications.',
+    locationLabel: '📍 Location',
+    locationValue: 'Aluminio, SP, Brazil',
+    companyLabel: '🏢 Current Company',
+    companyValue: 'iFood | Anota AI',
+    languagesLabel: '🌐 Languages',
+    languagesValue: 'Portuguese (native) • English (intermediate)',
+    educationLabel: '🎓 Education',
+    educationValue: 'Data Science • Information Technology',
+    impactLabel: '💡 Social Impact',
+    impactValue: 'Volunteer • WoMakersCode',
+    skillsTitle: 'Stacks',
+    skillsSubtitle: 'Use the buttons below to explore the categories.',
+    tabFrontend: 'Frontend',
+    tabBackend: 'Data Science',
+    tabNlp: 'NLP',
+    tabTools: 'Tools',
+    projectsTitle: 'Projects',
+    projectsSubtitle: 'Click each project to see more details.',
+    footerTitle: 'Want to know more? Let us talk:',
+    modalDefaultTitle: 'Project details',
+    modalRepoText: 'View on GitHub →',
+    projectTag1: 'AI for order tracking',
+    projectTag2: 'AI translation and summarization',
+    projectTag3: 'AI background removal'
+  }
+};
+
+const projectTranslations = {
+  pt: [
+    {
+      title: 'Check Orders Chatbot',
+      desc: 'Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio.'
+    },
+    {
+      title: 'Translate Summarizer App',
+      desc: 'Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva.'
+    },
+    {
+      title: 'Background Remover App',
+      desc: 'Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces.'
+    }
+  ],
+  en: [
+    {
+      title: 'Check Orders Chatbot',
+      desc: 'Chatbot for automated order status tracking, built with Python and an interactive web interface using Gradio.'
+    },
+    {
+      title: 'Translate Summarizer App',
+      desc: 'Python application that combines automatic translation and text summarization using Hugging Face Transformers AI models, with an interactive Gradio interface for simple and fast text processing.'
+    },
+    {
+      title: 'Background Remover App',
+      desc: 'Web app for automatic image background removal using Artificial Intelligence, built with Python, a Gradio interface, and deployed on Hugging Face Spaces.'
+    }
+  ]
+};
 
 function syncHeroTypewriter() {
   if (!heroDescription) {
@@ -17,11 +147,104 @@ function syncHeroTypewriter() {
   const text = heroDescription.textContent.trim();
   const charCount = [...text].length || 1;
 
-  heroDescription.style.setProperty('--hero-typed-width', `${charCount}ch`);
+  heroDescription.style.animation = 'none';
+  heroDescription.style.width = 'max-content';
+
+  const measuredWidth = Math.ceil(heroDescription.scrollWidth) || 1;
+
+  heroDescription.style.width = '';
+  heroDescription.style.setProperty('--hero-typed-width', `${measuredWidth}px`);
   heroDescription.style.animation = `typewriter 4s steps(${charCount}, end) infinite, blink 1s steps(1, end) infinite`;
 }
 
 syncHeroTypewriter();
+
+function setText(id, value) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.textContent = value;
+  }
+}
+
+function setHtml(id, value) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.innerHTML = value;
+  }
+}
+
+function applyLanguage(language) {
+  const copy = translations[language];
+  const projects = projectTranslations[language];
+
+  if (!copy || !projects) {
+    return;
+  }
+
+  currentLanguage = language;
+  htmlRoot.lang = language === 'pt' ? 'pt-BR' : 'en';
+  document.title = copy.pageTitle;
+
+  if (languagePtButton && languageEnButton) {
+    languagePtButton.classList.toggle('active', language === 'pt');
+    languageEnButton.classList.toggle('active', language === 'en');
+    languagePtButton.setAttribute('aria-label', copy.languageAriaPt);
+    languageEnButton.setAttribute('aria-label', copy.languageAriaEn);
+  }
+
+  setText('hero-eyebrow', copy.heroEyebrow);
+  setText('hero-description', copy.heroDescription);
+  setText('about-kicker', copy.aboutKicker);
+  setHtml('about-title', copy.aboutTitle);
+  setHtml('about-paragraph-1', copy.aboutParagraph1);
+  setHtml('about-paragraph-2', copy.aboutParagraph2);
+  setText('location-label', copy.locationLabel);
+  setText('location-value', copy.locationValue);
+  setText('company-label', copy.companyLabel);
+  setText('company-value', copy.companyValue);
+  setText('languages-label', copy.languagesLabel);
+  setText('languages-value', copy.languagesValue);
+  setText('education-label', copy.educationLabel);
+  setText('education-value', copy.educationValue);
+  setText('impact-label', copy.impactLabel);
+  setText('impact-value', copy.impactValue);
+  setText('skills-title', copy.skillsTitle);
+  setText('skills-subtitle', copy.skillsSubtitle);
+  setText('tab-frontend', copy.tabFrontend);
+  setText('tab-backend', copy.tabBackend);
+  setText('tab-nlp', copy.tabNlp);
+  setText('tab-tools', copy.tabTools);
+  setText('projects-title', copy.projectsTitle);
+  setText('projects-subtitle', copy.projectsSubtitle);
+  setText('project-1-tag', copy.projectTag1);
+  setText('project-2-tag', copy.projectTag2);
+  setText('project-3-tag', copy.projectTag3);
+  setText('footer-title', copy.footerTitle);
+  setText('modal-repo-btn', copy.modalRepoText);
+
+  projectCards.forEach((card, index) => {
+    const project = projects[index];
+    if (!project) {
+      return;
+    }
+
+    card.dataset.title = project.title;
+    card.dataset.desc = project.desc;
+  });
+
+  if (activeCard && modal.classList.contains('show')) {
+    modalTitle.textContent = activeCard.dataset.title;
+    modalDescription.textContent = activeCard.dataset.desc;
+    modalRepoBtn.href = activeCard.dataset.repo;
+  } else {
+    modalTitle.textContent = copy.modalDefaultTitle;
+    modalDescription.textContent = '';
+  }
+
+  syncHeroTypewriter();
+}
+
+applyLanguage(currentLanguage);
 
 function setActiveTab(target) {
   tabs.forEach(tab => tab.classList.toggle('active', tab === target));
@@ -34,6 +257,7 @@ tabs.forEach(tab => {
 
 projectCards.forEach(card => {
   card.addEventListener('click', () => {
+    activeCard = card;
     modalTitle.textContent = card.dataset.title;
     modalDescription.textContent = card.dataset.desc;
     modalRepoBtn.href = card.dataset.repo;
@@ -43,18 +267,34 @@ projectCards.forEach(card => {
 
 closeModal.addEventListener('click', () => {
   modal.classList.remove('show');
+  activeCard = null;
 });
 
 modal.addEventListener('click', event => {
   if (event.target === modal) {
     modal.classList.remove('show');
+    activeCard = null;
   }
 });
 
-const footer = document.querySelector('.footer');
-
-contactButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    footer.scrollIntoView({ behavior: 'smooth' });
+if (languagePtButton && languageEnButton) {
+  languagePtButton.addEventListener('click', () => {
+    if (currentLanguage !== 'pt') {
+      applyLanguage('pt');
+    }
   });
-});
+
+  languageEnButton.addEventListener('click', () => {
+    if (currentLanguage !== 'en') {
+      applyLanguage('en');
+    }
+  });
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.body.classList.contains('light-mode') ? 'dark' : 'light';
+    applyTheme(nextTheme);
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  });
+}

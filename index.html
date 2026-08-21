@@ -7,15 +7,45 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="theme-switch">
+    <button id="theme-toggle" type="button" aria-label="Ativar modo claro" aria-pressed="false">
+      <svg class="lamp-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 4.8a4.5 4.5 0 0 0-2.7 8.1c.67.53 1.15 1.27 1.32 2.1h2.76c.17-.83.65-1.57 1.32-2.1A4.5 4.5 0 0 0 12 4.8Z" />
+        <path d="M10.9 16.2h2.2" />
+        <path d="M11.2 18h1.6" />
+        <path class="lamp-rays" d="M12 2.4v1.7" />
+        <path class="lamp-rays" d="M6.9 4.6l1.1 1.2" />
+        <path class="lamp-rays" d="M17.1 4.6 16 5.8" />
+        <path class="lamp-rays" d="M4.6 9.6h1.7" />
+        <path class="lamp-rays" d="M19.4 9.6h-1.7" />
+      </svg>
+    </button>
+  </div>
+
+  <div class="language-switch">
+    <button id="lang-pt" type="button" aria-label="Mudar idioma para Português">PT</button>
+    <button id="lang-en" type="button" aria-label="Switch language to English">EN</button>
+  </div>
+
   <header class="hero">
     <div class="hero-content">
-      <div>
-        <p class="eyebrow">Non binary · 26 years old · Sao Paulo, Brazil</p>
-        <h1>Lune Carvalho</h1>
-        <p class="hero-description">Data Science and AI Student.</p>
-        <div class="hero-actions">
-          <button id="action-contact">Entre em contato</button>
+      <div class="hero-avatar-shell" aria-hidden="true">
+        <div class="hero-avatar">
+          <img
+            id="hero-photo"
+            src="assets/lune-photo.png"
+            alt="Foto de Lune Carvalho"
+            loading="lazy"
+            onerror="this.style.display='none'; this.closest('.hero-avatar').classList.add('missing-photo');"
+          />
+          <span class="hero-avatar-fallback">LC</span>
         </div>
+      </div>
+
+      <div class="hero-text">
+        <p class="eyebrow" id="hero-eyebrow">Non binary · 26 years old · Sao Paulo, Brazil</p>
+        <h1>Lune Carvalho</h1>
+        <p class="hero-description" id="hero-description">Data Science and AI Student.</p>
       </div>
     </div>
   </header>
@@ -23,14 +53,14 @@
   <main class="content">
   <section class="about-section">
     <div class="about-left">
-      <p class="kicker">// SOBRE MIM</p>
-      <h1>Quem sou <span>eu</span></h1>
-      <p>
+      <p class="kicker" id="about-kicker">// SOBRE MIM</p>
+      <h1 id="about-title">Quem sou <span>eu</span></h1>
+      <p id="about-paragraph-1">
         Estudante de <b>Ciência de Dados</b> e <b>Tecnologia da Informação</b> na 
         <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, com estudos focados em 
         Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural.
       </p>
-      <p>
+      <p id="about-paragraph-2">
         Dedicada atualmente no desenvolvimento de projetos práticos utilizando Python, desde o processamento de dados 
         até aplicações interativas de IA.
       </p>
@@ -40,24 +70,24 @@
       <p class="kicker"></p>
       <div class="info-card">
         <div class="info-item">
-          <span>📍 Localização</span>
-          <p>Alumínio, SP</p>
+          <span id="location-label">📍 Localização</span>
+          <p id="location-value">Alumínio, SP</p>
         </div>
         <div class="info-item">
-          <span>🏢 Empresa Atual</span>
-          <p>iFood | Anota AI</p>
+          <span id="company-label">🏢 Empresa Atual</span>
+          <p id="company-value">iFood | Anota AI</p>
         </div>
         <div class="info-item">
-          <span>🌐 Idiomas</span>
-          <p>Português (nativo) • Inglês (intermediário)</p>
+          <span id="languages-label">🌐 Idiomas</span>
+          <p id="languages-value">Português (nativo) • Inglês (intermediário)</p>
         </div>
         <div class="info-item">
-          <span>🎓 Formação</span>
-          <p>Ciência de Dados • Tecnologia da Informação</p>
+          <span id="education-label">🎓 Formação</span>
+          <p id="education-value">Ciência de Dados • Tecnologia da Informação</p>
         </div>
         <div class="info-item">
-          <span>💡 Impacto Social</span>
-          <p>Voluntária • WoMakersCode</p>
+          <span id="impact-label">💡 Impacto Social</span>
+          <p id="impact-value">Voluntária • WoMakersCode</p>
         </div>
       </div>
     </div>
@@ -65,14 +95,14 @@
 
     <section class="section" id="skills">
       <div class="section-header">
-        <h2>Stacks</h2>
-        <p>Use os botões abaixo para explorar as categorias.</p>
+        <h2 id="skills-title">Stacks</h2>
+        <p id="skills-subtitle">Use os botões abaixo para explorar as categorias.</p>
       </div>
       <div class="skill-tabs">
-        <button class="tab active" data-skill="frontend">Frontend</button>
-        <button class="tab" data-skill="backend">Data Science</button>
-        <button class="tab" data-skill="nlp">NLP</button>
-        <button class="tab" data-skill="tools">Ferramentas</button>
+        <button class="tab active" data-skill="frontend" id="tab-frontend">Frontend</button>
+        <button class="tab" data-skill="backend" id="tab-backend">Data Science</button>
+        <button class="tab" data-skill="nlp" id="tab-nlp">NLP</button>
+        <button class="tab" data-skill="tools" id="tab-tools">Ferramentas</button>
       </div>
       <div class="skill-panels">
         <div class="panel active" data-skill="frontend">
@@ -110,28 +140,28 @@
 
     <section class="section" id="projects">
       <div class="section-header">
-        <h2>Projetos</h2>
-        <p>Clique em cada projeto para ver mais detalhes.</p>
+        <h2 id="projects-title">Projetos</h2>
+        <p id="projects-subtitle">Clique em cada projeto para ver mais detalhes.</p>
       </div>
       <div class="project-grid">
         <div class="project-card" data-title="Check Orders Chatbot" data-desc="Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio." data-repo="https://github.com/lunecarvalho/check-orders-chatbot">
           <h3>Check Orders Chatbot</h3>
-          <p>IA para consulta de pedidos</p>
+          <p id="project-1-tag">IA para consulta de pedidos</p>
         </div>
         <div class="project-card" data-title="Translate Summarizer App" data-desc="Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva." data-repo="https://github.com/lunecarvalho/translate-summarizer-app">
           <h3>Translate Summarizer App</h3>
-          <p>Tradução e resumo com IA</p>
+          <p id="project-2-tag">Tradução e resumo com IA</p>
         </div>
         <div class="project-card" data-title="Background Remover App" data-desc="Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces." data-repo="https://github.com/lunecarvalho/background-remover-app">
           <h3>Background Remover App</h3>
-          <p>Remoção de fundo com IA</p>
+          <p id="project-3-tag">Remoção de fundo com IA</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <p>Quer saber mais? Vamos conversar:</p>
+    <p id="footer-title">Quer saber mais? Vamos conversar:</p>
     <div class="footer-actions">
       <a class="social-btn" href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.334-1.757-1.334-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.806 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.305-5.467-1.335-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.124-.304-.535-1.53.115-3.185 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.655 1.655.245 2.88.12 3.185.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.82 1.115.82 2.25 0 1.625-.015 2.935-.015 3.335 0 .32.21.695.825.575C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
