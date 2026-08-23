@@ -27,6 +27,13 @@
     <button id="lang-en" type="button" aria-label="Switch language to English">EN</button>
   </div>
 
+  <nav class="side-nav" aria-label="Navegação principal">
+    <a class="side-nav-link active" href="#about" data-section="about"><span id="nav-about">Sobre mim</span></a>
+    <a class="side-nav-link" href="#skills" data-section="skills"><span id="nav-skills">Stacks</span></a>
+    <a class="side-nav-link" href="#projects" data-section="projects"><span id="nav-projects">Projetos</span></a>
+    <a class="side-nav-link" href="#contact" data-section="contact"><span id="nav-contact">Contato</span></a>
+  </nav>
+
   <header class="hero">
     <div class="hero-content">
       <div class="hero-avatar-shell" aria-hidden="true">
@@ -51,7 +58,7 @@
   </header>
 
   <main class="content">
-  <section class="about-section">
+  <section class="about-section" id="about">
     <div class="about-left">
       <p class="kicker" id="about-kicker">// SOBRE MIM</p>
       <h1 id="about-title">Quem sou <span>eu</span></h1>
@@ -144,23 +151,35 @@
         <p id="projects-subtitle">Clique em cada projeto para ver mais detalhes.</p>
       </div>
       <div class="project-grid">
-        <div class="project-card" data-title="Check Orders Chatbot" data-desc="Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio." data-repo="https://github.com/lunecarvalho/check-orders-chatbot">
+        <div class="project-card" data-key="insignia" data-title="InsignIA" data-desc="Plataforma que combina uma extensão para navegador com um backend em FastAPI para analisar conversas de atendimento, classificando categorias e sentimento, gerando resumos e persistindo resultados em planilha." data-repo="https://github.com/lunecarvalho/insignIA-extension">
+          <h3>InsignIA</h3>
+          <p id="project-5-tag">Extensão de análise inteligente de atendimentos.</p>
+        </div>
+        <div class="project-card" data-key="chatbot" data-title="Check Orders Chatbot" data-desc="Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio." data-repo="https://github.com/lunecarvalho/check-orders-chatbot">
           <h3>Check Orders Chatbot</h3>
-          <p id="project-1-tag">IA para consulta de pedidos</p>
+          <p id="project-1-tag">IA para consulta de status de pedidos.</p>
         </div>
-        <div class="project-card" data-title="Translate Summarizer App" data-desc="Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva." data-repo="https://github.com/lunecarvalho/translate-summarizer-app">
+        <div class="project-card" data-key="translate" data-title="Translate Summarizer App" data-desc="Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva." data-repo="https://github.com/lunecarvalho/translate-summarizer-app">
           <h3>Translate Summarizer App</h3>
-          <p id="project-2-tag">Tradução e resumo com IA</p>
+          <p id="project-2-tag">Tradução e resumo de textos com IA.</p>
         </div>
-        <div class="project-card" data-title="Background Remover App" data-desc="Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces." data-repo="https://github.com/lunecarvalho/background-remover-app">
+        <div class="project-card" data-key="background" data-title="Background Remover App" data-desc="Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces." data-repo="https://github.com/lunecarvalho/background-remover-app">
           <h3>Background Remover App</h3>
-          <p id="project-3-tag">Remoção de fundo com IA</p>
+          <p id="project-3-tag">Remoção de fundo de imagens com IA.</p>
+        </div>
+        <div class="project-card" data-key="review" data-title="Review Similarities" data-desc="Aplicação interativa desenvolvida com Python e Gradio para identificar reviews mais similares a um tema específico, utilizando técnicas de Processamento de Linguagem Natural (NLP) e embeddings semânticos." data-repo="https://github.com/lunecarvalho/review-similarities">
+          <h3>Review Similarities</h3>
+          <p id="project-4-tag">Busca de reviews similares por tema usando NLP.</p>
+        </div>
+        <div class="project-card" data-key="faq" data-title="Frequently Asked Questions App" data-desc="Aplicação de FAQ interativo desenvolvida em Python que utiliza modelos de NLP para responder automaticamente perguntas frequentes com base em contextos pré-definidos, com interface em Gradio." data-repo="https://github.com/lunecarvalho/frequently-asked-questions-app">
+          <h3>Frequently Asked Questions App</h3>
+          <p id="project-6-tag">FAQ automatizado com IA.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+  <footer class="footer" id="contact">
     <p id="footer-title">Quer saber mais? Vamos conversar:</p>
     <div class="footer-actions">
       <a class="social-btn" href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer">

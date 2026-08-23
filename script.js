@@ -63,11 +63,18 @@ const translations = {
     projectsTitle: 'Projetos',
     projectsSubtitle: 'Clique em cada projeto para ver mais detalhes.',
     footerTitle: 'Quer saber mais? Vamos conversar:',
+    navAbout: 'Sobre mim',
+    navSkills: 'Stacks',
+    navProjects: 'Projetos',
+    navContact: 'Contato',
     modalDefaultTitle: 'Detalhes do projeto',
     modalRepoText: 'Ver no GitHub →',
-    projectTag1: 'IA para consulta de pedidos',
-    projectTag2: 'Tradução e resumo com IA',
-    projectTag3: 'Remoção de fundo com IA'
+    projectTag1: 'IA para consulta de status de pedidos.',
+    projectTag2: 'Tradução e resumo de textos com IA.',
+    projectTag3: 'Remoção de fundo de imagens com IA.',
+    projectTag4: 'Busca de reviews similares por tema usando NLP.',
+    projectTag5: 'Extensão de análise inteligente de atendimentos.',
+    projectTag6: 'FAQ automatizado com IA.'
   },
   en: {
     pageTitle: 'Lune Carvalho — Data Science and AI.',
@@ -100,43 +107,74 @@ const translations = {
     projectsTitle: 'Projects',
     projectsSubtitle: 'Click each project to see more details.',
     footerTitle: 'Want to know more? Let us talk:',
+    navAbout: 'About me',
+    navSkills: 'Stacks',
+    navProjects: 'Projects',
+    navContact: 'Contact',
     modalDefaultTitle: 'Project details',
     modalRepoText: 'View on GitHub →',
     projectTag1: 'AI for order tracking',
     projectTag2: 'AI translation and summarization',
-    projectTag3: 'AI background removal'
+    projectTag3: 'AI background removal',
+    projectTag4: 'NLP review similarity search',
+    projectTag5: 'Smart support conversation analysis',
+    projectTag6: 'AI-powered automated FAQ'
   }
 };
 
 const projectTranslations = {
-  pt: [
-    {
+  pt: {
+    chatbot: {
       title: 'Check Orders Chatbot',
       desc: 'Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio.'
     },
-    {
+    translate: {
       title: 'Translate Summarizer App',
       desc: 'Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva.'
     },
-    {
+    background: {
       title: 'Background Remover App',
       desc: 'Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces.'
+    },
+    review: {
+      title: 'Review Similarities',
+      desc: 'Aplicação interativa desenvolvida com Python e Gradio para identificar reviews mais similares a um tema específico, utilizando técnicas de Processamento de Linguagem Natural (NLP) e embeddings semânticos.'
+    },
+    insignia: {
+      title: 'InsignIA',
+      desc: 'Plataforma que combina uma extensão para navegador com um backend em FastAPI para analisar conversas de atendimento, classificando categorias e sentimento, gerando resumos e persistindo resultados em planilha.'
+    },
+    faq: {
+      title: 'Frequently Asked Questions App',
+      desc: 'Aplicação de FAQ interativo desenvolvida em Python que utiliza modelos de NLP para responder automaticamente perguntas frequentes com base em contextos pré-definidos, com interface em Gradio.'
     }
-  ],
-  en: [
-    {
+  },
+  en: {
+    chatbot: {
       title: 'Check Orders Chatbot',
       desc: 'Chatbot for automated order status tracking, built with Python and an interactive web interface using Gradio.'
     },
-    {
+    translate: {
       title: 'Translate Summarizer App',
       desc: 'Python application that combines automatic translation and text summarization using Hugging Face Transformers AI models, with an interactive Gradio interface for simple and fast text processing.'
     },
-    {
+    background: {
       title: 'Background Remover App',
       desc: 'Web app for automatic image background removal using Artificial Intelligence, built with Python, a Gradio interface, and deployed on Hugging Face Spaces.'
+    },
+    review: {
+      title: 'Review Similarities',
+      desc: 'Interactive application built with Python and Gradio to identify reviews most similar to a specific topic, using Natural Language Processing (NLP) techniques and semantic embeddings.'
+    },
+    insignia: {
+      title: 'InsignIA',
+      desc: 'Platform combining a browser extension with a FastAPI backend to analyze support conversations, classifying categories and sentiment, generating summaries, and storing results in a spreadsheet.'
+    },
+    faq: {
+      title: 'Frequently Asked Questions App',
+      desc: 'Interactive FAQ application built in Python that uses NLP models to automatically answer frequently asked questions based on predefined contexts, with a Gradio interface.'
     }
-  ]
+  }
 };
 
 function syncHeroTypewriter() {
@@ -219,11 +257,18 @@ function applyLanguage(language) {
   setText('project-1-tag', copy.projectTag1);
   setText('project-2-tag', copy.projectTag2);
   setText('project-3-tag', copy.projectTag3);
+  setText('project-4-tag', copy.projectTag4);
+  setText('project-5-tag', copy.projectTag5);
+  setText('project-6-tag', copy.projectTag6);
   setText('footer-title', copy.footerTitle);
+  setText('nav-about', copy.navAbout);
+  setText('nav-skills', copy.navSkills);
+  setText('nav-projects', copy.navProjects);
+  setText('nav-contact', copy.navContact);
   setText('modal-repo-btn', copy.modalRepoText);
 
-  projectCards.forEach((card, index) => {
-    const project = projects[index];
+  projectCards.forEach(card => {
+    const project = projects[card.dataset.key];
     if (!project) {
       return;
     }
@@ -298,3 +343,53 @@ if (themeToggle) {
     localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
   });
 }
+
+const sideNavLinks = document.querySelectorAll('.side-nav-link');
+const navSections = Array.from(sideNavLinks)
+  .map(link => document.getElementById(link.dataset.section))
+  .filter(Boolean);
+
+function setActiveNavLink(sectionId) {
+  sideNavLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.section === sectionId);
+  });
+}
+
+if (navSections.length) {
+  const orderedSections = navSections
+    .slice()
+    .sort((a, b) => a.offsetTop - b.offsetTop);
+
+  function updateActiveNavOnScroll() {
+    const scrollPosition = window.scrollY + window.innerHeight * 0.35;
+    let currentSection = orderedSections[0];
+
+    orderedSections.forEach(section => {
+      if (section.offsetTop <= scrollPosition) {
+        currentSection = section;
+      }
+    });
+
+    setActiveNavLink(currentSection.id);
+  }
+
+  let scrollTicking = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!scrollTicking) {
+        window.requestAnimationFrame(() => {
+          updateActiveNavOnScroll();
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    },
+    { passive: true }
+  );
+
+  window.addEventListener('resize', updateActiveNavOnScroll);
+  updateActiveNavOnScroll();
+}
+
+
