@@ -33,15 +33,15 @@ applyTheme(savedTheme === 'light' ? 'light' : 'dark');
 
 const translations = {
   pt: {
-    pageTitle: 'Lune Carvalho — Ciência de Dados e IA.',
+    pageTitle: 'Lune Carvalho — Data Scientist.',
     languageAriaPt: 'Idioma atual: Português',
     languageAriaEn: 'Switch language to English',
     heroEyebrow: 'Non binary · 26 years old · Sao Paulo, Brazil',
-    heroDescription: 'Data Science and AI Student.',
+    heroDescription: 'Data Science and AI.',
     aboutKicker: '// SOBRE MIM',
     aboutTitle: 'Quem sou <span>eu</span>',
     aboutParagraph1:
-      'Estudante de <b>Ciência de Dados</b> e <b>Tecnologia da Informação</b> na <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, com estudos focados em Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural.',
+      'Formanda de <b>Ciência de Dados</b> e <b>Tecnologia da Informação</b> na <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, com estudos focados em Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural.',
     aboutParagraph2:
       'Dedicada atualmente no desenvolvimento de projetos práticos utilizando Python, desde o processamento de dados até aplicações interativas de IA.',
     locationLabel: '📍 Localização',
@@ -77,11 +77,11 @@ const translations = {
     projectTag6: 'FAQ automatizado com IA.'
   },
   en: {
-    pageTitle: 'Lune Carvalho — Data Science and AI.',
+    pageTitle: 'Lune Carvalho — Data Scientist.',
     languageAriaPt: 'Mudar idioma para Português',
     languageAriaEn: 'Current language: English',
     heroEyebrow: 'Non binary · 26 years old · Sao Paulo, Brazil',
-    heroDescription: 'Data Science and AI Student.',
+    heroDescription: 'Data Science and AI.',
     aboutKicker: '// ABOUT ME',
     aboutTitle: 'Who am <span>I</span>',
     aboutParagraph1:
@@ -89,7 +89,7 @@ const translations = {
     aboutParagraph2:
       'Currently dedicated to building practical projects with Python, from data processing to interactive AI applications.',
     locationLabel: '📍 Location',
-    locationValue: 'Aluminio, SP, Brazil',
+    locationValue: 'Aluminio, Sao Paulo, BR',
     companyLabel: '🏢 Current Company',
     companyValue: 'iFood | Anota AI',
     languagesLabel: '🌐 Languages',
