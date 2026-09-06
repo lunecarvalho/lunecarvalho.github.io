@@ -581,8 +581,45 @@ button {
 
 .footer {
   text-align: center;
-  padding: 1.3rem 1.5rem 3rem;
+  padding: 1.3rem 1.5rem;
   color: #8d9bd6;
+}
+
+.footer-copyright {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+p#footer-copyright {
+  padding-top: 0;
+  margin: 0;
+  text-transform: uppercase;
+  text-align: start;
+  letter-spacing: 5px;
+  font-size: 9px;
+}
+
+p#rights {
+  margin: 0;
+  text-transform: uppercase;
+  text-align: end;
+  letter-spacing: 5px;
+  font-size: 9px;
+}
+
+p#rights img {
+  width: 12px;
+  height: 10px;
+  object-fit: cover;
+  display: inline-block;
+  flex-shrink: 0;
+  transform: translateY(2.5px);
 }
 
 .footer-actions {
@@ -628,6 +665,7 @@ button {
 }
 
 .footer p {
+  margin-top: 0;
   text-transform: uppercase;
   letter-spacing: 0.18em;
   color: #f4e5a4;
