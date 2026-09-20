@@ -148,34 +148,9 @@
     <section class="section" id="projects">
       <div class="section-header">
         <h2 id="projects-title">Projetos</h2>
-        <p id="projects-subtitle">Clique em cada projeto para ver mais detalhes.</p>
+        <p id="projects-subtitle" role="status" aria-live="polite">Carregando projetos...</p>
       </div>
-      <div class="project-grid">
-        <div class="project-card" data-key="insignia" data-title="InsignIA" data-desc="Plataforma que combina uma extensão para navegador com um backend em FastAPI para analisar conversas de atendimento, classificando categorias e sentimento, gerando resumos e persistindo resultados em planilha." data-repo="https://github.com/lunecarvalho/insignIA-extension">
-          <h3>InsignIA</h3>
-          <p id="project-5-tag">Extensão de análise inteligente de atendimentos.</p>
-        </div>
-        <div class="project-card" data-key="chatbot" data-title="Check Orders Chatbot" data-desc="Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio." data-repo="https://github.com/lunecarvalho/check-orders-chatbot">
-          <h3>Check Orders Chatbot</h3>
-          <p id="project-1-tag">IA para consulta de status de pedidos.</p>
-        </div>
-        <div class="project-card" data-key="translate" data-title="Translate Summarizer App" data-desc="Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva." data-repo="https://github.com/lunecarvalho/translate-summarizer-app">
-          <h3>Translate Summarizer App</h3>
-          <p id="project-2-tag">Tradução e resumo de textos com IA.</p>
-        </div>
-        <div class="project-card" data-key="background" data-title="Background Remover App" data-desc="Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces." data-repo="https://github.com/lunecarvalho/background-remover-app">
-          <h3>Background Remover App</h3>
-          <p id="project-3-tag">Remoção de fundo de imagens com IA.</p>
-        </div>
-        <div class="project-card" data-key="review" data-title="Review Similarities" data-desc="Aplicação interativa desenvolvida com Python e Gradio para identificar reviews mais similares a um tema específico, utilizando técnicas de Processamento de Linguagem Natural (NLP) e embeddings semânticos." data-repo="https://github.com/lunecarvalho/review-similarities">
-          <h3>Review Similarities</h3>
-          <p id="project-4-tag">Busca de reviews similares por tema usando NLP.</p>
-        </div>
-        <div class="project-card" data-key="faq" data-title="Frequently Asked Questions App" data-desc="Aplicação de FAQ interativo desenvolvida em Python que utiliza modelos de NLP para responder automaticamente perguntas frequentes com base em contextos pré-definidos, com interface em Gradio." data-repo="https://github.com/lunecarvalho/frequently-asked-questions-app">
-          <h3>Frequently Asked Questions App</h3>
-          <p id="project-6-tag">FAQ automatizado com IA.</p>
-        </div>
-      </div>
+      <div class="project-grid" aria-busy="true"></div>
     </section>
   </main>
 

@@ -1,6 +1,6 @@
 const tabs = document.querySelectorAll('.tab');
 const panels = document.querySelectorAll('.panel');
-const projectCards = document.querySelectorAll('.project-card');
+const projectGrid = document.querySelector('.project-grid');
 const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modal-title');
 const modalDescription = document.getElementById('modal-description');
@@ -15,6 +15,7 @@ const THEME_STORAGE_KEY = 'portfolio-theme';
 
 let activeCard = null;
 let currentLanguage = 'pt';
+let projectsState = 'loading';
 
 function applyTheme(theme) {
   const isLight = theme === 'light';
@@ -69,12 +70,10 @@ const translations = {
     navContact: 'Contato',
     modalDefaultTitle: 'Detalhes do projeto',
     modalRepoText: 'Ver no GitHub →',
-    projectTag1: 'IA para consulta de status de pedidos.',
-    projectTag2: 'Tradução e resumo de textos com IA.',
-    projectTag3: 'Remoção de fundo de imagens com IA.',
-    projectTag4: 'Busca de reviews similares por tema usando NLP.',
-    projectTag5: 'Extensão de análise inteligente de atendimentos.',
-    projectTag6: 'FAQ automatizado com IA.'
+    projectsLoading: 'Carregando projetos...',
+    projectsEmpty: 'Nenhum projeto disponível no momento.',
+    projectsError: 'Não foi possível carregar os projetos. Tente recarregar a página.',
+    projectNoDescription: 'Descrição não informada.'
   },
   en: {
     pageTitle: 'Lune Carvalho — Data Scientist.',
@@ -113,67 +112,10 @@ const translations = {
     navContact: 'Contact',
     modalDefaultTitle: 'Project details',
     modalRepoText: 'View on GitHub →',
-    projectTag1: 'AI for order tracking',
-    projectTag2: 'AI translation and summarization',
-    projectTag3: 'AI background removal',
-    projectTag4: 'NLP review similarity search',
-    projectTag5: 'Smart support conversation analysis',
-    projectTag6: 'AI-powered automated FAQ'
-  }
-};
-
-const projectTranslations = {
-  pt: {
-    chatbot: {
-      title: 'Check Orders Chatbot',
-      desc: 'Chatbot para consulta automatizada de status de pedidos, desenvolvido em Python com interface web interativa utilizando Gradio.'
-    },
-    translate: {
-      title: 'Translate Summarizer App',
-      desc: 'Aplicação desenvolvida em Python que integra tradução automática e sumarização de textos utilizando modelos de IA da Hugging Face Transformers. O projeto também conta com interface interativa em Gradio, permitindo processar textos de forma simples, rápida e intuitiva.'
-    },
-    background: {
-      title: 'Background Remover App',
-      desc: 'Aplicação web para remoção automática de fundo de imagens utilizando Inteligência Artificial, desenvolvida em Python com interface Gradio e deploy no Hugging Face Spaces.'
-    },
-    review: {
-      title: 'Review Similarities',
-      desc: 'Aplicação interativa desenvolvida com Python e Gradio para identificar reviews mais similares a um tema específico, utilizando técnicas de Processamento de Linguagem Natural (NLP) e embeddings semânticos.'
-    },
-    insignia: {
-      title: 'InsignIA',
-      desc: 'Plataforma que combina uma extensão para navegador com um backend em FastAPI para analisar conversas de atendimento, classificando categorias e sentimento, gerando resumos e persistindo resultados em planilha.'
-    },
-    faq: {
-      title: 'Frequently Asked Questions App',
-      desc: 'Aplicação de FAQ interativo desenvolvida em Python que utiliza modelos de NLP para responder automaticamente perguntas frequentes com base em contextos pré-definidos, com interface em Gradio.'
-    }
-  },
-  en: {
-    chatbot: {
-      title: 'Check Orders Chatbot',
-      desc: 'Chatbot for automated order status tracking, built with Python and an interactive web interface using Gradio.'
-    },
-    translate: {
-      title: 'Translate Summarizer App',
-      desc: 'Python application that combines automatic translation and text summarization using Hugging Face Transformers AI models, with an interactive Gradio interface for simple and fast text processing.'
-    },
-    background: {
-      title: 'Background Remover App',
-      desc: 'Web app for automatic image background removal using Artificial Intelligence, built with Python, a Gradio interface, and deployed on Hugging Face Spaces.'
-    },
-    review: {
-      title: 'Review Similarities',
-      desc: 'Interactive application built with Python and Gradio to identify reviews most similar to a specific topic, using Natural Language Processing (NLP) techniques and semantic embeddings.'
-    },
-    insignia: {
-      title: 'InsignIA',
-      desc: 'Platform combining a browser extension with a FastAPI backend to analyze support conversations, classifying categories and sentiment, generating summaries, and storing results in a spreadsheet.'
-    },
-    faq: {
-      title: 'Frequently Asked Questions App',
-      desc: 'Interactive FAQ application built in Python that uses NLP models to automatically answer frequently asked questions based on predefined contexts, with a Gradio interface.'
-    }
+    projectsLoading: 'Loading projects...',
+    projectsEmpty: 'No projects available at the moment.',
+    projectsError: 'Unable to load projects. Please reload the page to try again.',
+    projectNoDescription: 'No description provided.'
   }
 };
 
@@ -213,9 +155,8 @@ function setHtml(id, value) {
 
 function applyLanguage(language) {
   const copy = translations[language];
-  const projects = projectTranslations[language];
 
-  if (!copy || !projects) {
+  if (!copy) {
     return;
   }
 
@@ -253,13 +194,7 @@ function applyLanguage(language) {
   setText('tab-nlp', copy.tabNlp);
   setText('tab-tools', copy.tabTools);
   setText('projects-title', copy.projectsTitle);
-  setText('projects-subtitle', copy.projectsSubtitle);
-  setText('project-1-tag', copy.projectTag1);
-  setText('project-2-tag', copy.projectTag2);
-  setText('project-3-tag', copy.projectTag3);
-  setText('project-4-tag', copy.projectTag4);
-  setText('project-5-tag', copy.projectTag5);
-  setText('project-6-tag', copy.projectTag6);
+  updateProjectsStatus();
   setText('footer-title', copy.footerTitle);
   setText('nav-about', copy.navAbout);
   setText('nav-skills', copy.navSkills);
@@ -267,19 +202,13 @@ function applyLanguage(language) {
   setText('nav-contact', copy.navContact);
   setText('modal-repo-btn', copy.modalRepoText);
 
-  projectCards.forEach(card => {
-    const project = projects[card.dataset.key];
-    if (!project) {
-      return;
-    }
-
-    card.dataset.title = project.title;
-    card.dataset.desc = project.desc;
+  projectGrid.querySelectorAll('.project-card').forEach(card => {
+    card.querySelector('p').textContent = card.dataset.desc || copy.projectNoDescription;
   });
 
   if (activeCard && modal.classList.contains('show')) {
     modalTitle.textContent = activeCard.dataset.title;
-    modalDescription.textContent = activeCard.dataset.desc;
+    modalDescription.textContent = activeCard.dataset.desc || copy.projectNoDescription;
     modalRepoBtn.href = activeCard.dataset.repo;
   } else {
     modalTitle.textContent = copy.modalDefaultTitle;
@@ -300,14 +229,17 @@ tabs.forEach(tab => {
   tab.addEventListener('click', () => setActiveTab(tab));
 });
 
-projectCards.forEach(card => {
-  card.addEventListener('click', () => {
-    activeCard = card;
-    modalTitle.textContent = card.dataset.title;
-    modalDescription.textContent = card.dataset.desc;
-    modalRepoBtn.href = card.dataset.repo;
-    modal.classList.add('show');
-  });
+projectGrid.addEventListener('click', event => {
+  const card = event.target.closest('.project-card');
+  if (!card || !projectGrid.contains(card)) {
+    return;
+  }
+
+  activeCard = card;
+  modalTitle.textContent = card.dataset.title;
+  modalDescription.textContent = card.dataset.desc || translations[currentLanguage].projectNoDescription;
+  modalRepoBtn.href = card.dataset.repo;
+  modal.classList.add('show');
 });
 
 closeModal.addEventListener('click', () => {
@@ -391,5 +323,84 @@ if (navSections.length) {
   window.addEventListener('resize', updateActiveNavOnScroll);
   updateActiveNavOnScroll();
 }
+function updateProjectsStatus() {
+  const copy = translations[currentLanguage];
+  const messages = {
+    loading: copy.projectsLoading,
+    empty: copy.projectsEmpty,
+    error: copy.projectsError,
+    ready: copy.projectsSubtitle
+  };
+  setText('projects-subtitle', messages[projectsState]);
+  projectGrid.setAttribute('aria-busy', String(projectsState === 'loading'));
+}
 
+async function loadProjects() {
+  projectsState = 'loading';
+  updateProjectsStatus();
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
 
+  try {
+    const repositories = [];
+    let page = 1;
+    let batch;
+
+    // Fetch every page before rendering so a later failure cannot show a partial list.
+    do {
+      const response = await fetch(
+        `https://api.github.com/users/lunecarvalho/repos?type=owner&sort=full_name&direction=asc&per_page=100&page=${page}`,
+        {
+          headers: { Accept: 'application/vnd.github+json' },
+          credentials: 'omit',
+          cache: 'no-store',
+          signal: controller.signal
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`GitHub API: ${response.status}`);
+      }
+      batch = await response.json();
+      if (!Array.isArray(batch)) {
+        throw new Error('Invalid GitHub repositories response');
+      }
+      repositories.push(...batch);
+      page += 1;
+    } while (batch.length === 100);
+
+    const fragment = document.createDocumentFragment();
+    repositories
+      .filter(repo => repo.private === false && repo.topics?.includes('portfolio'))
+      .forEach(repo => {
+        // Keep the existing card markup; API content is always inserted as text.
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        card.dataset.title = repo.name;
+        card.dataset.desc = repo.description || '';
+        const repoUrl = new URL(repo.html_url);
+        if (repoUrl.origin !== 'https://github.com') {
+          throw new Error('Invalid GitHub repository URL');
+        }
+        card.dataset.repo = repoUrl.href;
+
+        const title = document.createElement('h3');
+        title.textContent = repo.name;
+        const description = document.createElement('p');
+        description.textContent = repo.description || translations[currentLanguage].projectNoDescription;
+        card.append(title, description);
+        fragment.append(card);
+      });
+
+    projectGrid.replaceChildren(fragment);
+    projectsState = projectGrid.childElementCount ? 'ready' : 'empty';
+  } catch (error) {
+    projectGrid.replaceChildren();
+    projectsState = 'error';
+    console.warn('Unable to load portfolio projects:', error);
+  } finally {
+    clearTimeout(timeout);
+    updateProjectsStatus();
+  }
+}
+
+loadProjects();
