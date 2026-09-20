@@ -63,7 +63,10 @@ const translations = {
     tabTools: 'Ferramentas',
     projectsTitle: 'Projetos',
     projectsSubtitle: 'Clique em cada projeto para ver mais detalhes.',
-    footerTitle: 'Quer saber mais? Vamos conversar:',
+    // Keep the Portuguese contact copy in HTML as its single source.
+    contactTitle: document.getElementById('contact-title').textContent,
+    footerTitle: document.getElementById('footer-title').textContent,
+    contactDescription: document.getElementById('contact-description').textContent,
     navAbout: 'Sobre mim',
     navSkills: 'Stacks',
     navProjects: 'Projetos',
@@ -105,7 +108,9 @@ const translations = {
     tabTools: 'Tools',
     projectsTitle: 'Projects',
     projectsSubtitle: 'Click each project to see more details.',
-    footerTitle: 'Want to know more? Let us talk:',
+    contactTitle: 'CONTACT',
+    footerTitle: 'Want to know more? Let us talk!',
+    contactDescription: 'I am open to opportunities and collaborations in Data Science, Machine Learning, Natural Language Processing and Artificial Intelligence.',
     navAbout: 'About me',
     navSkills: 'Stacks',
     navProjects: 'Projects',
@@ -173,7 +178,13 @@ function applyLanguage(language) {
 
   setText('hero-eyebrow', copy.heroEyebrow);
   setText('hero-description', copy.heroDescription);
-  setText('about-kicker', copy.aboutKicker);
+  const aboutKicker = document.getElementById('about-kicker');
+  if (aboutKicker) {
+    const prefix = document.createElement('span');
+    prefix.className = 'kicker-prefix';
+    prefix.textContent = copy.aboutKicker.slice(0, 2);
+    aboutKicker.replaceChildren(prefix, copy.aboutKicker.slice(2));
+  }
   setHtml('about-title', copy.aboutTitle);
   setHtml('about-paragraph-1', copy.aboutParagraph1);
   setHtml('about-paragraph-2', copy.aboutParagraph2);
@@ -196,6 +207,16 @@ function applyLanguage(language) {
   setText('projects-title', copy.projectsTitle);
   updateProjectsStatus();
   setText('footer-title', copy.footerTitle);
+  const contactCallout = document.getElementById('footer-title');
+  const questionEnd = copy.footerTitle.indexOf('?') + 1;
+  if (contactCallout && questionEnd > 0) {
+    const highlight = document.createElement('strong');
+    highlight.className = 'contact-highlight';
+    highlight.textContent = copy.footerTitle.slice(questionEnd);
+    contactCallout.replaceChildren(copy.footerTitle.slice(0, questionEnd), highlight);
+  }
+  setText('contact-title', copy.contactTitle);
+  setText('contact-description', copy.contactDescription);
   setText('nav-about', copy.navAbout);
   setText('nav-skills', copy.navSkills);
   setText('nav-projects', copy.navProjects);
