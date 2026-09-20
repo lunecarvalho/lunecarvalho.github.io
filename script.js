@@ -335,6 +335,28 @@ function updateProjectsStatus() {
   projectGrid.setAttribute('aria-busy', String(projectsState === 'loading'));
 }
 
+const projectDisplayNames = {
+  'background-remover-app': 'Background Remover',
+  'check-orders-chatbot': 'Check Orders Chatbot',
+  'comment-rating-classification': 'Comment Rating Classification',
+  'frequently-asked-questions-app': 'FAQ App',
+  'media-management-system': 'MediaTrack',
+  'model-exam-sklearn': 'Scikit-learn Model',
+  'newslens-project': 'NewsLens',
+  'regression_model': 'Regression Model',
+  'translate-summarizer-app': 'Translate & Summarizer'
+};
+
+function getProjectDisplayName(repositoryName) {
+  if (Object.prototype.hasOwnProperty.call(projectDisplayNames, repositoryName)) {
+    return projectDisplayNames[repositoryName];
+  }
+
+  return repositoryName
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, character => character.toUpperCase());
+}
+
 async function loadProjects() {
   projectsState = 'loading';
   updateProjectsStatus();
@@ -375,7 +397,7 @@ async function loadProjects() {
         // Keep the existing card markup; API content is always inserted as text.
         const card = document.createElement('div');
         card.className = 'project-card';
-        card.dataset.title = repo.name;
+        card.dataset.title = getProjectDisplayName(repo.name);
         card.dataset.desc = repo.description || '';
         const repoUrl = new URL(repo.html_url);
         if (repoUrl.origin !== 'https://github.com') {
@@ -384,7 +406,7 @@ async function loadProjects() {
         card.dataset.repo = repoUrl.href;
 
         const title = document.createElement('h3');
-        title.textContent = repo.name;
+        title.textContent = card.dataset.title;
         const description = document.createElement('p');
         description.textContent = repo.description || translations[currentLanguage].projectNoDescription;
         card.append(title, description);
