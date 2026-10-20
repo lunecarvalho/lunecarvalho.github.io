@@ -40,7 +40,7 @@
         <div class="hero-avatar">
           <img
             id="hero-photo"
-            src="assets/lune-photo.png"
+            src="assets/lune-photo.jpeg"
             alt="Foto de Lune Carvalho"
             loading="lazy"
             onerror="this.style.display='none'; this.closest('.hero-avatar').classList.add('missing-photo');"
@@ -77,23 +77,60 @@
       <p class="kicker"></p>
       <div class="info-card">
         <div class="info-item">
-          <span id="location-label">📍 Localização</span>
+          <span class="info-label">
+            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 10c0 4.993-8 12-8 12S4 14.993 4 10a8 8 0 1 1 16 0Z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span id="location-label">Localização</span>
+          </span>
           <p id="location-value">Alumínio, SP</p>
         </div>
         <div class="info-item">
-          <span id="company-label">🏢 Empresa Atual</span>
+          <span class="info-label">
+            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <rect width="20" height="14" x="2" y="7" rx="2"></rect>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+              <path d="M2 12h20"></path>
+              <path d="M10 12v2"></path>
+              <path d="M14 12v2"></path>
+            </svg>
+            <span id="company-label">Empresa Atual</span>
+          </span>
           <p id="company-value">iFood | Anota AI</p>
         </div>
         <div class="info-item">
-          <span id="languages-label">🌐 Idiomas</span>
+          <span class="info-label">
+            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="m5 8 6 6"></path>
+              <path d="m4 14 6-6 2-3"></path>
+              <path d="M2 5h12"></path>
+              <path d="M7 2h1"></path>
+              <path d="m22 22-5-10-5 10"></path>
+              <path d="M14 18h6"></path>
+            </svg>
+            <span id="languages-label">Idiomas</span>
+          </span>
           <p id="languages-value">Português: Nativo • Inglês: Intermediário B1</p>
         </div>
         <div class="info-item">
-          <span id="education-label">🎓 Formação</span>
+          <span class="info-label">
+            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22 10v6"></path>
+              <path d="m2 10 10-5 10 5-10 5Z"></path>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+            </svg>
+            <span id="education-label">Formação</span>
+          </span>
           <p id="education-value">Ciência de Dados • Tecnologia da Informação</p>
         </div>
         <div class="info-item">
-          <span id="impact-label">💡 Impacto Social</span>
+          <span class="info-label">
+            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path>
+            </svg>
+            <span id="impact-label">Impacto Social</span>
+          </span>
           <p id="impact-value">Voluntária • WoMakersCode</p>
         </div>
       </div>

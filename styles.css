@@ -17,7 +17,7 @@ html {
   font-size: 18px;
   font-weight: 400;
   font-style: normal;
-  background: #120a29;
+  background: #121212;
   color: #fffefa;
   line-height: 1.7;
   accent-color: #f2c94c;
@@ -25,8 +25,8 @@ html {
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top, rgba(120, 56, 176, 0.4), transparent 35%),
-    linear-gradient(180deg, #15092a 0%, #09040f 100%);
+  background: radial-gradient(circle at top, rgba(100, 100, 100, 0.22), transparent 35%),
+    linear-gradient(180deg, #1b1b1b 0%, #090909 100%);
 }
 
 .theme-switch {
@@ -388,7 +388,7 @@ button {
 
 .info-card {
   background: rgba(91, 44, 111, 0.081);
-  border: 1px solid rgba(91, 44, 111, 0.35);
+  border: 1px solid transparent;
   border-radius: 14px;
   padding: 25px;
   padding-bottom: 10px;
@@ -400,12 +400,30 @@ button {
   font-size: 1rem;
 }
 
-.info-item span {
-  display: block;
-  font-size: 1rem;
+.info-item > .info-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   color: #f2c94c;
   margin-bottom: 4px;
   letter-spacing: 1px;
+}
+
+.info-item > .info-label > span {
+  display: block;
+  font-size: 1rem;
+}
+
+.info-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  fill: none;
+  color: #f2c94c;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .info-item p {
@@ -414,7 +432,7 @@ button {
 }
 
 .info-card:hover {
-  border-color: linear-gradient(135deg, rgba(91, 44, 111, 0.35), rgba(242, 201, 76, 0.18));
+  border-color: rgba(190, 190, 190, 0.55);
   transform: translateY(-3px);
   transition: 0.3s ease;
 }
@@ -622,7 +640,8 @@ p#rights img {
   object-fit: cover;
   display: inline-block;
   flex-shrink: 0;
-  transform: translateY(2.5px);
+  vertical-align: middle;
+  transform: none;
 }
 
 .footer-actions {
@@ -908,7 +927,7 @@ body.light-mode .eyebrow,
 body.light-mode .hero-description,
 body.light-mode .footer p,
 body.light-mode .kicker,
-body.light-mode .info-item span {
+body.light-mode .info-item > .info-label {
   color: #5a3a74;
 }
 
@@ -917,8 +936,12 @@ body.light-mode .hero-description {
   color: #5f3f7c;
 }
 
-body.light-mode .info-card .info-item span {
+body.light-mode .info-card .info-item > .info-label {
   color: #3f2457;
+}
+
+body.light-mode .info-icon {
+  color: #4b2f62;
 }
 
 body.light-mode .info-card .info-item p {
@@ -964,7 +987,7 @@ body.light-mode .project-card,
 body.light-mode .info-card,
 body.light-mode .footer-actions .social-btn {
   background: rgba(91, 44, 111, 0.1);
-  border-color: rgba(91, 44, 111, 0.24);
+  border-color: transparent;
   color: #362347;
 }
 
@@ -1080,4 +1103,109 @@ body.light-mode .footer-copyright {
 
 body.light-mode .footer-copyright p {
   color: var(--footer-text);
+}
+
+/* Dark theme uses a neutral graphite palette while retaining the yellow accents. */
+body:not(.light-mode) #theme-toggle:hover {
+  box-shadow: 0 0 12px rgba(190, 190, 190, 0.3), inset 0 0 10px rgba(242, 201, 76, 0.28);
+}
+
+body:not(.light-mode) #theme-toggle[aria-pressed="true"] {
+  box-shadow: 0 0 14px rgba(190, 190, 190, 0.34), inset 0 0 12px rgba(242, 201, 76, 0.34);
+}
+
+body:not(.light-mode) #lang-pt,
+body:not(.light-mode) #lang-en,
+body:not(.light-mode) .tab,
+body:not(.light-mode) .modal-close {
+  color: #d0d0d0;
+}
+
+body:not(.light-mode) #lang-pt:hover,
+body:not(.light-mode) #lang-en:hover,
+body:not(.light-mode) #lang-pt.active,
+body:not(.light-mode) #lang-en.active {
+  box-shadow: 0 0 20px rgba(170, 170, 170, 0.42), 0 0 40px rgba(120, 120, 120, 0.25), inset 0 0 15px rgba(242, 201, 76, 0.35);
+}
+
+body:not(.light-mode) .side-nav-link {
+  color: rgba(210, 210, 210, 0.58);
+}
+
+body:not(.light-mode) .hero-avatar {
+  background: linear-gradient(140deg, #fff3a3 0%, #f2c94c 100%);
+}
+
+body:not(.light-mode) .hero-avatar::after {
+  background: linear-gradient(155deg, rgba(100, 100, 100, 0.46) 0%, rgba(58, 58, 58, 0.4) 45%, rgba(18, 18, 18, 0.46) 100%);
+}
+
+body:not(.light-mode) .hero-avatar-fallback {
+  background: linear-gradient(180deg, rgba(35, 35, 35, 0.95), rgba(8, 8, 8, 0.98));
+}
+
+body:not(.light-mode) .hero-actions button {
+  background: linear-gradient(90deg, #f2c94c 10%, #666666 50%, #000000 100%);
+}
+
+body:not(.light-mode) .about-left span {
+  background: linear-gradient(140deg, rgba(185, 185, 185, 0.95) 0%, rgba(110, 110, 110, 0.95) 50%, rgba(242, 201, 76, 0.95) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body:not(.light-mode) .info-card {
+  background: rgba(135, 135, 135, 0.08);
+  border-color: rgba(180, 180, 180, 0.32);
+}
+
+body:not(.light-mode) .info-card:hover {
+  border-color: rgba(190, 190, 190, 0.55);
+}
+
+body:not(.light-mode) .tab.active,
+body:not(.light-mode) .tab:hover {
+  background: linear-gradient(135deg, rgba(130, 130, 130, 0.35), rgba(242, 201, 76, 0.18));
+  box-shadow: 0 0 20px rgba(150, 150, 150, 0.42), 0 0 40px rgba(100, 100, 100, 0.25), inset 0 0 15px rgba(242, 201, 76, 0.35);
+}
+
+body:not(.light-mode) .footer {
+  color: #b5b5b5;
+}
+
+body:not(.light-mode) .footer-actions button,
+body:not(.light-mode) .footer-actions .social-btn {
+  background: rgba(140, 140, 140, 0.12);
+  box-shadow: 0 0 20px rgba(110, 110, 110, 0.35), 0 0 40px rgba(80, 80, 80, 0.2);
+}
+
+body:not(.light-mode) .footer-actions button:hover,
+body:not(.light-mode) .footer-actions .social-btn:hover {
+  background: linear-gradient(135deg, rgba(130, 130, 130, 0.38), rgba(242, 201, 76, 0.24));
+  box-shadow: 0 0 20px rgba(150, 150, 150, 0.42), 0 0 40px rgba(100, 100, 100, 0.25), 0 10px 22px rgba(242, 201, 76, 0.24);
+}
+
+body:not(.light-mode) #contact .social-btn:hover {
+  border-color: rgba(180, 180, 180, 0.5);
+  background: rgba(130, 130, 130, 0.24);
+  box-shadow: 0 0 12px rgba(150, 150, 150, 0.32);
+}
+
+body:not(.light-mode) .modal {
+  background: rgba(20, 20, 20, 0.9);
+}
+
+body:not(.light-mode) .modal-panel {
+  background: rgba(30, 30, 30, 0.98);
+}
+
+body:not(.light-mode) .modal-repo-btn {
+  border-color: rgba(170, 170, 170, 0.35);
+  background: rgba(140, 140, 140, 0.12);
+  box-shadow: 0 0 20px rgba(110, 110, 110, 0.35), 0 0 40px rgba(80, 80, 80, 0.2);
+}
+
+body:not(.light-mode) .modal-repo-btn:hover {
+  background: linear-gradient(135deg, rgba(130, 130, 130, 0.38), rgba(242, 201, 76, 0.24));
+  box-shadow: 0 0 20px rgba(150, 150, 150, 0.42), 0 0 40px rgba(100, 100, 100, 0.25), 0 10px 22px rgba(242, 201, 76, 0.24);
 }
