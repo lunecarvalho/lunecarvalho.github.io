@@ -1,235 +1,100 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lune Carvalho — Data Scientist.</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de Lune Carvalho — Ciência de Dados, Machine Learning, NLP e Inteligência Artificial.">
+  <title>Lune Carvalho — Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="theme-switch">
-    <button id="theme-toggle" type="button" aria-label="Ativar modo claro" aria-pressed="false">
-      <svg class="lamp-icon" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 4.8a4.5 4.5 0 0 0-2.7 8.1c.67.53 1.15 1.27 1.32 2.1h2.76c.17-.83.65-1.57 1.32-2.1A4.5 4.5 0 0 0 12 4.8Z" />
-        <path d="M10.9 16.2h2.2" />
-        <path d="M11.2 18h1.6" />
-        <path class="lamp-rays" d="M12 2.4v1.7" />
-        <path class="lamp-rays" d="M6.9 4.6l1.1 1.2" />
-        <path class="lamp-rays" d="M17.1 4.6 16 5.8" />
-        <path class="lamp-rays" d="M4.6 9.6h1.7" />
-        <path class="lamp-rays" d="M19.4 9.6h-1.7" />
-      </svg>
-    </button>
-  </div>
-
-  <div class="language-switch">
-    <button id="lang-pt" type="button" aria-label="Mudar idioma para Português">PT</button>
-    <button id="lang-en" type="button" aria-label="Switch language to English">EN</button>
-  </div>
-
-  <nav class="side-nav" aria-label="Navegação principal">
-    <a class="side-nav-link active" href="#about" data-section="about"><span id="nav-about">Sobre mim</span></a>
-    <a class="side-nav-link" href="#skills" data-section="skills"><span id="nav-skills">Stacks</span></a>
-    <a class="side-nav-link" href="#projects" data-section="projects"><span id="nav-projects">Projetos</span></a>
-    <a class="side-nav-link" href="#contact" data-section="contact"><span id="nav-contact">Contato</span></a>
-  </nav>
-
-  <header class="hero">
-    <div class="hero-content">
-      <div class="hero-avatar-shell" aria-hidden="true">
-        <div class="hero-avatar">
-          <img
-            id="hero-photo"
-            src="assets/lune-photo.jpeg"
-            alt="Foto de Lune Carvalho"
-            loading="lazy"
-            onerror="this.style.display='none'; this.closest('.hero-avatar').classList.add('missing-photo');"
-          />
-          <span class="hero-avatar-fallback">LC</span>
-        </div>
-      </div>
-
-      <div class="hero-text">
-        <p class="eyebrow" id="hero-eyebrow">Non binary · 26 years old · Sao Paulo, Brazil</p>
-        <h1>Lune Carvalho</h1>
-        <p class="hero-description" id="hero-description">Data Science and AI.</p>
+  <header class="site-header">
+    <a class="brand" href="#inicio" aria-label="Ir para o início">&gt; lune.dev<span class="cursor" aria-hidden="true">_</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" data-i18n="menu">menu</button>
+    <nav id="main-nav" class="main-nav" aria-label="Navegação principal">
+      <a href="#sobre" data-i18n="navAbout">sobre</a>
+      <a href="#projetos" data-i18n="navProjects">projetos</a>
+      <a href="#habilidades" data-i18n="navSkills">skills</a>
+      <a href="#contato" data-i18n="navContact">contato</a>
+    </nav>
+    <div class="header-tools">
+      <a href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer" aria-label="GitHub">gh</a>
+      <a href="https://linkedin.com/in/lune-carvalho" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+      <a href="mailto:acarvalho.lune@gmail.com" aria-label="Enviar e-mail">@</a>
+      <div class="language-switch" aria-label="Idioma">
+        <button id="lang-pt" class="active" type="button" data-i18n-aria="langPtAria">PT</button>
+        <button id="lang-en" type="button" data-i18n-aria="langEnAria">EN</button>
       </div>
     </div>
   </header>
 
-  <main class="content">
-  <section class="about-section" id="about">
-    <div class="about-left">
-      <p class="kicker" id="about-kicker"><span class="kicker-prefix">//</span> SOBRE MIM</p>
-      <h1 id="about-title">Quem sou <span>eu</span></h1>
-      <p id="about-paragraph-1">
-        Formanda de <b>Ciência de Dados</b> e <b>Tecnologia da Informação</b> na 
-        <b>Universidade Virtual do Estado de São Paulo (UNIVESP)</b>, com estudos focados em 
-        Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural.
-      </p>
-      <p id="about-paragraph-2">
-        Dedicada atualmente no desenvolvimento de projetos práticos utilizando Python, desde o processamento de dados 
-        até aplicações interativas de IA.
-      </p>
-    </div>
-
-    <div class="about-right">
-      <p class="kicker"></p>
-      <div class="info-card">
-        <div class="info-item">
-          <span class="info-label">
-            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20 10c0 4.993-8 12-8 12S4 14.993 4 10a8 8 0 1 1 16 0Z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-            <span id="location-label">Localização</span>
-          </span>
-          <p id="location-value">Alumínio, SP</p>
-        </div>
-        <div class="info-item">
-          <span class="info-label">
-            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <rect width="20" height="14" x="2" y="7" rx="2"></rect>
-              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-              <path d="M2 12h20"></path>
-              <path d="M10 12v2"></path>
-              <path d="M14 12v2"></path>
-            </svg>
-            <span id="company-label">Empresa Atual</span>
-          </span>
-          <p id="company-value">iFood | Anota AI</p>
-        </div>
-        <div class="info-item">
-          <span class="info-label">
-            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="m5 8 6 6"></path>
-              <path d="m4 14 6-6 2-3"></path>
-              <path d="M2 5h12"></path>
-              <path d="M7 2h1"></path>
-              <path d="m22 22-5-10-5 10"></path>
-              <path d="M14 18h6"></path>
-            </svg>
-            <span id="languages-label">Idiomas</span>
-          </span>
-          <p id="languages-value">Português: Nativo • Inglês: Intermediário B1</p>
-        </div>
-        <div class="info-item">
-          <span class="info-label">
-            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 10v6"></path>
-              <path d="m2 10 10-5 10 5-10 5Z"></path>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-            </svg>
-            <span id="education-label">Formação</span>
-          </span>
-          <p id="education-value">Ciência de Dados • Tecnologia da Informação</p>
-        </div>
-        <div class="info-item">
-          <span class="info-label">
-            <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"></path>
-            </svg>
-            <span id="impact-label">Impacto Social</span>
-          </span>
-          <p id="impact-value">Voluntária • WoMakersCode</p>
+  <main>
+    <section class="hero section-shell" id="inicio"><div class="hero-copy">
+        <p class="prompt">$ whoami</p>
+        <h1>LUNE CARVALHO<span class="accent">_</span></h1>
+        <p class="role" data-i18n="role">Cientista de Dados <span>|</span> Machine Learning <span>|</span> Inteligência Artificial</p>
+        <p class="lead" data-i18n="heroLead">Desenvolvo aplicações e tecnologias que transformam dados em conhecimento, unindo ciência de dados, inteligência artificial e desenvolvimento de software.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projetos"><span data-i18n="viewProjects">Ver projetos</span> <span>→</span></a>
+          <a class="button button-ghost" href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
         </div>
       </div>
-    </div>
-  </section>
-
-    <section class="section" id="skills">
-      <div class="section-header">
-        <h2 id="skills-title">Stacks</h2>
-        <p id="skills-subtitle">Use os botões abaixo para explorar as categorias.</p>
-      </div>
-      <div class="skill-tabs">
-        <button class="tab active" data-skill="frontend" id="tab-frontend">Frontend</button>
-        <button class="tab" data-skill="backend" id="tab-backend">Data Science</button>
-        <button class="tab" data-skill="nlp" id="tab-nlp">NLP</button>
-        <button class="tab" data-skill="tools" id="tab-tools">Ferramentas</button>
-      </div>
-      <div class="skill-panels">
-        <div class="panel active" data-skill="frontend">
-          <div class="skill-item"><strong>HTML5</strong></div>
-          <div class="skill-item"><strong>CSS3</strong></div>
-          <div class="skill-item"><strong>JavaScript</strong></div>
-          <div class="skill-item"><strong>Gradio</strong></div>
-          <div class="skill-item"><strong>Streamlit</strong></div>
-        </div>
-        <div class="panel" data-skill="backend">
-          <div class="skill-item"><strong>Python</strong></div>
-          <div class="skill-item"><strong>Pandas</strong></div>
-          <div class="skill-item"><strong>NumPy</strong></div>
-          <div class="skill-item"><strong>Scikit-learn</strong></div>
-          <div class="skill-item"><strong>TensorFlow</strong></div>
-          <div class="skill-item"><strong>PyTorch</strong></div>
-        </div>
-        <div class="panel" data-skill="nlp">
-          <div class="skill-item"><strong>NLTK</strong></div>
-          <div class="skill-item"><strong>spaCy</strong></div>
-          <div class="skill-item"><strong>Transformers</strong></div>
-          <div class="skill-item"><strong>Hugging Face</strong></div>
-          <div class="skill-item"><strong>TF-IDF</strong></div>
-          <div class="skill-item"><strong>Bag of Words</strong></div>
-          <div class="skill-item"><strong>Word Embeddings</strong></div>
-        </div>
-        <div class="panel" data-skill="tools">
-          <div class="skill-item"><strong>SQL</strong></div>
-          <div class="skill-item"><strong>MySQL</strong></div>
-          <div class="skill-item"><strong>Git</strong></div>
-          <div class="skill-item"><strong>Github</strong></div>
+      <div class="terminal-panel" data-i18n-aria="terminalAria">
+        <div class="terminal-bar"><span></span><span></span><span></span><b>lune@portfolio:~</b></div>
+        <div class="terminal-body">
+          <p><span class="prompt">$</span> ls ./navigation</p>
+          <a href="#sobre"><span>01</span> <span data-i18n="terminalAbout">about</span> <small data-i18n="terminalAboutDesc">— minha trajetória</small></a>
+          <a href="#projetos"><span>02</span> <span data-i18n="terminalProjects">projects</span> <small data-i18n="terminalProjectsDesc">— projetos desenvolvidos</small></a>
+          <a href="#habilidades"><span>03</span> <span data-i18n="terminalSkills">skills</span> <small data-i18n="terminalSkillsDesc">— tecnologias e ferramentas</small></a>
+          <a href="#contato"><span>04</span> <span data-i18n="terminalContact">contact</span> <small data-i18n="terminalContactDesc">— vamos conversar</small></a>
+          <p class="terminal-caret"><span class="prompt">$</span> <i></i></p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="section-header">
-        <h2 id="projects-title">Projetos</h2>
-        <p id="projects-subtitle" role="status" aria-live="polite">Carregando projetos...</p>
+    <section class="section-shell section-block" id="sobre">
+      <div class="section-heading"><div><span class="section-index">01</span><p class="prompt">// about</p><h2 data-i18n="aboutTitle">Construindo com propósito.</h2></div></div>
+      <div class="about-grid">
+        <div class="code-block"><span class="code-comment"># um pouco sobre mim</span><p><strong>lune</strong> = {</p><p class="indent"><span>"formação"</span>: "Ciência de Dados — UNIVESP",</p><p class="indent"><span>"foco"</span>: ["Data Science", "IA", "Machine Learning", "NLP"],</p><p class="indent"><span>"missão"</span>: "transformar dados em conhecimento"</p><p>}</p></div>
+        <div class="about-text"><p data-i18n="aboutText1">Sou graduanda em <strong>Ciência de Dados e Tecnologia da Informação pela UNIVESP</strong>, com estudos focados em Inteligência Artificial, Machine Learning e Processamento de Linguagem Natural.</p><p data-i18n="aboutText2">Dedicada atualmente no desenvolvimento de projetos práticos utilizando Python, desde o processamento de dados até aplicações interativas de IA.</p></div>
       </div>
+    </section>
+
+    <section class="section-shell section-block" id="projetos">
+      <div class="section-heading heading-with-action"><div><span class="section-index">02</span><p class="prompt">// projects</p><h2 data-i18n="projectsTitle">Principais projetos.</h2></div><a class="text-link" href="https://github.com/lunecarvalho?tab=repositories" target="_blank" rel="noopener noreferrer"><span data-i18n="allProjects">ver todos no GitHub</span> ↗</a></div>
+      <p id="projects-subtitle" class="section-status" role="status" aria-live="polite">Acesse o repositório de cada projeto para ver mais detalhes.</p>
       <div class="project-grid" aria-busy="true"></div>
+    </section>
+
+    <section class="section-shell section-block" id="habilidades">
+      <div class="section-heading"><div><span class="section-index">03</span><p class="prompt">// skills</p><h2 data-i18n="skillsTitle">Tecnologias e ferramentas.</h2></div></div>
+      <div class="skill-grid">
+        <article class="skill-group"><h3><span data-i18n="dataScience">Data Science</span> <span>&amp; Analytics</span></h3><div class="badges"><b>Python</b><b>SQL</b><b>MySQL</b><b>SQLite</b><b>PostgreSQL</b><b>NumPy</b><b>Pandas</b><b>Scikit-learn</b><b>PyTorch</b><b>Power BI</b><b>Excel</b></div></article>
+        <article class="skill-group"><h3>Machine Learning <span>&amp; NLP</span></h3><div class="badges"><b>Machine Learning</b><b>Deep Learning</b><b>NLP</b><b>Transformers</b><b>BERT</b><b>NLTK</b><b>TensorFlow</b><b>spaCy</b><b>Hugging Face</b><b>TF-IDF</b><b>Bag of Words</b><b>Word Embeddings</b></div></article>
+        <article class="skill-group"><h3>Desenvolvimento</h3><div class="badges"><b>Streamlit</b><b>Gradio</b><b>Django</b><b>FastAPI</b><b>HTML</b><b>CSS</b><b>Javascript</b><b>REST APIs</b><b>Docker</b></div></article>
+        <article class="skill-group"><h3>Ferramentas</h3><div class="badges"><b>Git</b><b>GitHub</b><b>Jupyter Notebook</b><b>Google Colab</b></div></article>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="content" id="contact">
-      <div class="section-header contact-header">
-        <h2 class="kicker" id="contact-title">CONTATO</h2>
-        <p id="footer-title">Quer saber mais? <strong>Vamos conversar!</strong></p>
-        <p id="contact-description">Estou aberta a oportunidades e colaborações em Ciência de Dados, Machine Learning, Processamento de Linguagem Natural e Inteligência Artificial.</p>
-      </div>
-      <div class="footer-actions">
-        <a class="social-btn" href="https://linkedin.com/in/lune-carvalho" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.55c0-1.32-.03-3.02-1.84-3.02-1.84 0-2.12 1.43-2.12 2.92v5.65H9.38V9h3.41v1.56h.05c.48-.91 1.65-1.86 3.4-1.86 3.63 0 4.3 2.39 4.3 5.49v6.27zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.08 0-1.15.92-2.08 2.06-2.08 1.14 0 2.06.93 2.06 2.08 0 1.15-.92 2.08-2.06 2.08zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .8 0 1.78v20.44C0 23.2.8 24 1.78 24h20.44c.98 0 1.78-.8 1.78-1.78V1.78C24 .8 23.2 0 22.22 0z"/></svg>
-          LinkedIn
-        </a>
-        <a class="social-btn" href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.11.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.334-1.757-1.334-1.757-1.09-.745.083-.73.083-.73 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.806 1.305 3.492.998.108-.775.42-1.305.763-1.605-2.665-.305-5.467-1.335-5.467-5.93 0-1.31.47-2.38 1.235-3.22-.124-.304-.535-1.53.115-3.185 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.4 3-.405 1.02.005 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.655 1.655.245 2.88.12 3.185.77.84 1.235 1.91 1.235 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.82 1.115.82 2.25 0 1.625-.015 2.935-.015 3.335 0 .32.21.695.825.575C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub
-        </a>
-        <a class="social-btn" href="mailto:acarvalho.lune@gmail.com">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          E-mail
-        </a>
-      </div>
+  <footer class="footer section-shell" id="contato">
+    <div class="section-heading footer-heading"><div><span class="section-index">04</span><p class="prompt">// contact</p><h2><span class="contact-prompt">$</span> let's_build_something_together<span class="accent">_</span></h2></div></div><p class="footer-lead">Aberto à oportunidades e colaborações em Ciência de Dados, Machine Learning,<br>Processamento de Linguagem Natural e Inteligência Artificial,<br>e boas conversas sobre dados e tecnologia.</p>
+    <div class="contact-links">
+      <a href="https://github.com/lunecarvalho" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+        <svg class="contact-icon github-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.335-1.757-1.335-1.757-1.09-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.998.108-.776.417-1.305.762-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.404 1.02.005 2.04.137 3 .404 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.21 0 1.595-.015 2.875-.015 3.27 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+      <a href="https://linkedin.com/in/lune-carvalho" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 8.5H3V21h3.5V8.5ZM4.75 3A2.05 2.05 0 1 0 4.75 7.1 2.05 2.05 0 0 0 4.75 3ZM21 13.85c0-3.76-2-5.51-4.67-5.51-2.15 0-3.11 1.18-3.64 2v-1.84H9.2V21h3.49v-6.18c0-1.63.31-3.21 2.33-3.21 1.99 0 2.02 1.86 2.02 3.31V21H21v-7.15Z"/></svg>
+      </a>
+      <a href="mailto:acarvalho.lune@gmail.com" aria-label="E-mail" title="E-mail">
+        <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2 9 6 9-6M3 19l6-6m12 6-6-6"/></svg>
+      </a>
     </div>
-    <div class="footer-copyright"> 
-      <p id="footer-copyright">© Lune Carvalho · Data Scientist</p>
-      <p id="rights">
-        <img src="assets/icon.svg" alt="Bandeira não-binário">
-        Respect gender diversity.</p>
-    </div>
+    <p class="copyright">© 2026 Lune Carvalho · Respect gender diversity.</p>
   </footer>
-
-  <div class="modal" id="modal">
-    <div class="modal-panel">
-      <button class="modal-close" id="close-modal">×</button>
-      <h2 id="modal-title">Detalhes do projeto</h2>
-      <p id="modal-description"></p>
-      <a id="modal-repo-btn" href="#" target="_blank" rel="noopener noreferrer" class="modal-repo-btn">Ver no GitHub →</a>
-    </div>
-  </div>
-
   <script src="script.js"></script>
 </body>
 </html>
